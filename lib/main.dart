@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
+                button: TextStyle(color: Colors.white),
               ),
         ),
       ),
@@ -120,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.add),
-              onPressed: () {},
+              onPressed: () => _startAddNewTransaction(context),
             )
           ]),
       body: SingleChildScrollView(

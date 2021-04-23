@@ -42,6 +42,8 @@ class TransactionList extends StatelessWidget {
                   ),
                   child: ListTile(
                     leading: Container(
+                      height: 60,
+                      width: 60,
                       decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,
                         shape: BoxShape.circle,
