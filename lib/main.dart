@@ -21,6 +21,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  String titleInput;
+  String amountInput;
   final List<Transaction> transactions = [
     Transaction(
       id: 't1',
@@ -44,13 +46,54 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
           // mainAxisAlignment: MainAxisAlignment.end,
-          // crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
               width: double.infinity,
               child: Card(
                 child: Text('Chart!'),
                 elevation: 5,
+              ),
+            ),
+            Card(
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    TextField(
+                      cursorColor: Colors.red,
+                      decoration: InputDecoration(
+                        labelText: 'Title',
+                      ),
+                      onChanged: (valueInput){
+                        titleInput = valueInput;
+                      },
+                      
+                    ),
+                    TextField(
+                      cursorColor: Colors.green,
+                      decoration: InputDecoration(
+                        labelText: 'Amount',
+                      ),
+                      onChanged: (valueInput){
+                        amountInput = valueInput;
+                      }
+                    ),
+                    TextButton(
+                      child: Text(
+                        'Add Transaction',
+                        style: TextStyle(
+                          color: Colors.purple,
+                        ),
+                      ),
+                      onPressed: (){
+                        
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
             Column(
