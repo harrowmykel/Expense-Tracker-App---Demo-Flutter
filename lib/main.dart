@@ -16,6 +16,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.red,
+        fontFamily: 'Quicksand',
+        appBarTheme: AppBarTheme(
+          //set the basetheme
+          textTheme: ThemeData.light().textTheme.copyWith(
+                //override all texts marked as title
+                title: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 22,
+                ),
+              ),
+        ),
       ),
       home: MyHomePage(),
     );
@@ -78,12 +89,19 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Text('test'),
         ),
       ),
-      appBar: AppBar(title: Text('Flutter Demo'), actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.add),
-          onPressed: () {},
-        )
-      ]),
+      appBar: AppBar(
+          title: Text(
+            'Flutter Demo',
+            style: TextStyle(
+              fontFamily: 'OpenSans',
+            ),
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {},
+            )
+          ]),
       body: SingleChildScrollView(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.end,
