@@ -17,13 +17,23 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         accentColor: Colors.red,
         fontFamily: 'Quicksand',
+        //set the basetheme for text
+        textTheme: ThemeData.light().textTheme.copyWith(
+              //override all texts marked as title
+              title: TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
         appBarTheme: AppBarTheme(
-          //set the basetheme
+          //set the basetheme for app bars
           textTheme: ThemeData.light().textTheme.copyWith(
                 //override all texts marked as title
                 title: TextStyle(
                   fontFamily: 'OpenSans',
-                  fontSize: 22,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
         ),
