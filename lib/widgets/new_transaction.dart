@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 /**
  * changed to stateful so that data is not lost on rebuild
@@ -14,14 +15,14 @@ class NewTransaction extends StatefulWidget {
 
 class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
-
   final amountController = TextEditingController();
+  DateTime _pickedDate = null;
 
   void _submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
-    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+    if (enteredTitle.isEmpty || enteredAmount <= 0 || _pickedDate == null) {
       return;
     }
 
@@ -29,10 +30,25 @@ class _NewTransactionState extends State<NewTransaction> {
     widget._addTransactionFunction(
       enteredTitle,
       enteredAmount,
+      _pickedDate,
     );
 
     //auto close bottom sheet of submit
     Navigator.of(context).pop();
+  }
+
+  void _pickDate(BuildContext context) {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2019),
+      lastDate: DateTime.now(),
+    ).then((value) {
+      if (value == null) {
+        return;
+      }
+      _pickedDate = value;
+    });
   }
 
   @override
@@ -64,7 +80,11 @@ class _NewTransactionState extends State<NewTransaction> {
                 onSubmitted: (_) => _submitData(),
               ),
               Row(children: <Widget>[
-                Text('No Date Chosen'),
+                Expanded(
+                  child: Text(_pickedDate == null
+                      ? 'No Date Chosen'
+                      : DateFormat.yMMMd().format(_pickedDate)),
+                ),
                 TextButton(
                   child: Text(
                     'Choose Date',
@@ -73,7 +93,7 @@ class _NewTransactionState extends State<NewTransaction> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onPressed: () => _submitData(),
+                  onPressed: () => _pickDate(context),
                 ),
               ]),
               ElevatedButton(
