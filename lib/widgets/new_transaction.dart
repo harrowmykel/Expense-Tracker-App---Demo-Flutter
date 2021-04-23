@@ -98,10 +98,10 @@ class _NewTransactionState extends State<NewTransaction> {
                   onPressed: () => _pickDate(context),
                 ),
               ]),
-              AdaptiveButton({
+              AdaptiveButton(
                 text: 'Add Transaction',
-                onPressed: _submitData(),
-              }),
+                onPressed: () => _submitData(),
+              ),
             ],
           ),
         ),
