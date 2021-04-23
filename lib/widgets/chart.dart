@@ -26,14 +26,14 @@ class Chart extends StatelessWidget {
       });
 
       return {'day': DateFormat.E().format(weekDay), 'amount': totalSum};
-    });
+    }).reversed.toList();
   }
 
   double get maxSpending {
-    return groupedTransactionValues.fold(0.0, (sum, item) {
-      sum += item['amount'];
-      return sum;
-    });
+    return groupedTransactionValues.fold(
+      0.0,
+      (sum, item) => (sum + item['amount']),
+    );
   }
 
   @override

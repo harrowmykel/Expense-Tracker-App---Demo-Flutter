@@ -35,46 +35,30 @@ class TransactionList extends StatelessWidget {
               itemBuilder: (ctx, index) {
                 final Transaction tx = _transactions[index];
                 return Card(
-                  child: Row(children: [
-                    Container(
-                      child: Text(
-                        '\$${tx.amount.toStringAsFixed(2)}',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                      ),
-                      margin: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 15,
-                      ),
+                  elevation: 5,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 5,
+                  ),
+                  child: ListTile(
+                    leading: Container(
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Theme.of(context).primaryColor,
-                          width: 2,
+                        color: Theme.of(context).primaryColor,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: FittedBox(
+                          child: Text('\$${tx.amount.toStringAsFixed(2)}'),
                         ),
                       ),
-                      padding: EdgeInsets.all(10),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          tx.title,
-                          style: Theme.of(context).textTheme.title,
-                        ),
-                        Text(
-                          DateFormat.yMMMd().format(tx.date),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
+                    title: Text(
+                      tx.title,
+                      style: Theme.of(context).textTheme.title,
                     ),
-                  ]),
+                    subtitle: Text(DateFormat.yMMMd().format(tx.date)),
+                  ),
                 );
               },
               itemCount: _transactions.length,
