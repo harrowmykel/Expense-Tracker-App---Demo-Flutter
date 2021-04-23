@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import './adaptive_button.dart';
+
 /**
  * changed to stateful so that data is not lost on rebuild
  */
@@ -96,18 +98,10 @@ class _NewTransactionState extends State<NewTransaction> {
                   onPressed: () => _pickDate(context),
                 ),
               ]),
-              ElevatedButton(
-                child: Text(
-                  'Add Transaction',
-                ),
-                style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all(
-                      Theme.of(context).textTheme.button.color),
-                  backgroundColor:
-                      MaterialStateProperty.all(Theme.of(context).primaryColor),
-                ),
-                onPressed: () => _submitData(),
-              ),
+              AdaptiveButton({
+                text: 'Add Transaction',
+                onPressed: _submitData(),
+              }),
             ],
           ),
         ),
