@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Expense Tracker',
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.red,
@@ -138,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final appBar = AppBar(
         title: Text(
-          'Flutter Demo',
+          'Expense Tracker',
           style: TextStyle(
             fontFamily: 'OpenSans',
           ),
