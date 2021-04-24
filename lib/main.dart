@@ -106,9 +106,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state){
-
-  }
+  void didChangeAppLifecycleState(AppLifecycleState state){}
 
   @override
   dispose(){
